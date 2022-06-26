@@ -9,7 +9,8 @@ object Cocina {
 	method buenaOfertaVegetariana() = self.cantDePlatosNoVegetarianos() <=2
 	method cantDePlatosNoVegetarianos() = platos.size() - self.cantDePlatosVegetarianos()
 	method cantDePlatosVegetarianos() = platos.count { p => p.aptoVegetariano() }
-	method platoFuerteCarnivoro() = self.cantDePlatosNoVegetarianos().max { p => p.valoracion() }
+	method platosNoVegetarianos() = platos.filter { p => not p.aptoVegetariano() }
+	method platoFuerteCarnivoro() = self.platosNoVegetarianos().max { p => p.valoracion() }
 	method platosQueLeGustanA(unComensal) = platos.filter { p => unComensal.leAgrada(p) }
 	method elegirPlatoPara(unComensal) {
 		if(self.platosQueLeGustanA(unComensal).isEmpty()) self.error("No hay ningun plato que le guste")
