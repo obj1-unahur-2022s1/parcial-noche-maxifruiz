@@ -22,7 +22,7 @@ class Vegetariano inherits Comensales {
 class HambrePopular inherits Comensales {
 	
 	override method leAgrada(unaComida) = unaComida.esAbundante()
-
+	method condicion(){return true}
 }
 
 class PaladarFino inherits Comensales {
